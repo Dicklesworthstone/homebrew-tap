@@ -4,7 +4,7 @@
 class Dcg < Formula
   desc "Destructive Command Guard - Safety rails for AI coding agents"
   homepage "https://github.com/Dicklesworthstone/destructive_command_guard"
-  version "0.6.5"
+  version "0.6.6"
   license "MIT"
 
   on_macos do
