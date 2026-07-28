@@ -249,29 +249,73 @@ case "$TOOL" in
     ;;
 
   dcg)
-    # dcg is a Rust binary with per-platform .sha256 files
+    # dcg publishes checksummed archives for every Homebrew architecture.
     echo "Fetching checksums for dcg..."
 
-    MACOS_ARM=$(curl -sL "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v${VERSION}/dcg-aarch64-apple-darwin.tar.xz.sha256" | cut -d' ' -f1)
-    LINUX_INTEL=$(curl -sL "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v${VERSION}/dcg-x86_64-unknown-linux-gnu.tar.xz.sha256" | cut -d' ' -f1)
+    DCG_REPO="Dicklesworthstone/destructive_command_guard"
+    DCG_MACOS_ARM_ASSET="dcg-aarch64-apple-darwin.tar.xz"
+    DCG_MACOS_INTEL_ASSET="dcg-x86_64-apple-darwin.tar.xz"
+    DCG_LINUX_ARM_ASSET="dcg-aarch64-unknown-linux-gnu.tar.xz"
+    DCG_LINUX_INTEL_ASSET="dcg-x86_64-unknown-linux-musl.tar.xz"
+
+    MACOS_ARM=$(fetch_release_sha256 "$DCG_REPO" "$DCG_MACOS_ARM_ASSET")
+    MACOS_INTEL=$(fetch_release_sha256 "$DCG_REPO" "$DCG_MACOS_INTEL_ASSET")
+    LINUX_ARM=$(fetch_release_sha256 "$DCG_REPO" "$DCG_LINUX_ARM_ASSET")
+    LINUX_INTEL=$(fetch_release_sha256 "$DCG_REPO" "$DCG_LINUX_INTEL_ASSET")
+
+    require_sha256 "$DCG_MACOS_ARM_ASSET" "$MACOS_ARM"
+    require_sha256 "$DCG_MACOS_INTEL_ASSET" "$MACOS_INTEL"
+    require_sha256 "$DCG_LINUX_ARM_ASSET" "$LINUX_ARM"
+    require_sha256 "$DCG_LINUX_INTEL_ASSET" "$LINUX_INTEL"
 
     echo "  macOS ARM: $MACOS_ARM"
+    echo "  macOS Intel: $MACOS_INTEL"
+    echo "  Linux ARM: $LINUX_ARM"
     echo "  Linux Intel: $LINUX_INTEL"
 
-    # Update version
-    sed -i.bak "s/version \"[^\"]*\"/version \"${VERSION}\"/" "$FORMULA_FILE"
+    DCG_VERSION="$VERSION" \
+    DCG_MACOS_ARM_SHA="$MACOS_ARM" \
+    DCG_MACOS_INTEL_SHA="$MACOS_INTEL" \
+    DCG_LINUX_ARM_SHA="$LINUX_ARM" \
+    DCG_LINUX_INTEL_SHA="$LINUX_INTEL" \
+    ruby - "$FORMULA_FILE" <<'RUBY'
+      path = ARGV.fetch(0)
+      version = ENV.fetch("DCG_VERSION")
+      repo = "Dicklesworthstone/destructive_command_guard"
+      assets = {
+        "dcg-aarch64-apple-darwin.tar.xz" => ENV.fetch("DCG_MACOS_ARM_SHA"),
+        "dcg-x86_64-apple-darwin.tar.xz" => ENV.fetch("DCG_MACOS_INTEL_SHA"),
+        "dcg-aarch64-unknown-linux-gnu.tar.xz" => ENV.fetch("DCG_LINUX_ARM_SHA"),
+        "dcg-x86_64-unknown-linux-musl.tar.xz" => ENV.fetch("DCG_LINUX_INTEL_SHA")
+      }
 
-    # Update checksums using Ruby-aware replacement
-    ruby -i.bak -e '
-      content = File.read(ARGV[0])
-      content.gsub!(/url[^\n]+aarch64-apple-darwin[^\n]+\n\s+sha256 "[a-f0-9]+"/) { |m|
-        m.sub(/sha256 "[a-f0-9]+"/, "sha256 \"'"$MACOS_ARM"'\"")
-      }
-      content.gsub!(/url[^\n]+x86_64-unknown-linux-gnu[^\n]+\n\s+sha256 "[a-f0-9]+"/) { |m|
-        m.sub(/sha256 "[a-f0-9]+"/, "sha256 \"'"$LINUX_INTEL"'\"")
-      }
-      File.write(ARGV[0], content)
-    ' "$FORMULA_FILE"
+      content = File.read(path)
+      version_matches = content.scan(/^\s*version "[^"]+"$/).length
+      abort "expected exactly one version field, found #{version_matches}" unless version_matches == 1
+      content = content.sub(/^(\s*version ")[^"]+(")$/, "\\1#{version}\\2")
+
+      assets.each do |asset, checksum|
+        pattern = %r{
+          ^(\s*url\ "https://github\.com/#{Regexp.escape(repo)}/releases/download/)v[^/]+
+          (/#{Regexp.escape(asset)}"\s*\n\s*sha256\ ")[^"]+(")$
+        }x
+        replacements = 0
+        content = content.gsub(pattern) do
+          replacements += 1
+          "#{Regexp.last_match(1)}v#{version}#{Regexp.last_match(2)}#{checksum}#{Regexp.last_match(3)}"
+        end
+        abort "expected exactly one URL/checksum block for #{asset}, found #{replacements}" unless replacements == 1
+      end
+
+      published_assets = content.scan(
+        %r{destructive_command_guard/releases/download/v[^/]+/(dcg-[^"]+\.tar\.xz)"}
+      ).flatten
+      expected_assets = assets.keys.sort
+      abort "unexpected dcg release assets: #{published_assets.sort.inspect}" unless published_assets.sort == expected_assets
+      abort "dcg formula still contains a placeholder checksum" if content.match?(/sha256 "(?:Not|0{64})"/)
+
+      File.write(path, content)
+RUBY
     ;;
 
   tru)

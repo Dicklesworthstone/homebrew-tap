@@ -60,7 +60,7 @@ jobs:
 
   e2e-macos-intel:
     name: E2E Tests (macOS Intel)
-    runs-on: macos-13
+    runs-on: macos-15-intel
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
@@ -153,7 +153,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-14, macos-13, ubuntu-22.04]
+        os: [macos-14, macos-15-intel, ubuntu-22.04]
     steps:
       - uses: actions/checkout@v4
 

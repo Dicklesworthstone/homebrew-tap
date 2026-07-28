@@ -102,13 +102,15 @@ validate_formula() {
         else
             log_warn "Test block exists but may be empty/trivial"
         fi
+    elif grep -q "^[[:space:]]*disable!" "$formula"; then
+        log_pass "Disabled formula does not require an executable test"
     else
         log_fail "Missing test block (required for CI)"
     fi
 
     # 4. Install block
     log_info "Checking install block..."
-    if grep -q "def install" "$formula"; then
+    if grep -qE "def install|define_method\\(:install\\)" "$formula"; then
         log_pass "Install method present"
     else
         log_fail "Missing install method"

@@ -60,10 +60,10 @@ brew install dicklesworthstone/tap/cass
 | caam | ✅ | ✅ | ✅ | ✅ |
 | rch  | ✅ | ✅ | ✅ | ✅ |
 | slb  | ✅ | ✅ | ✅ | ✅ |
-| dcg  | - | ✅ | ✅ | - |
+| dcg  | ✅ | ✅ | ✅ | ✅ |
 | tru  | ✅ | ✅ | ✅ | ✅ |
 
-> **Note**: ru and ubs are Bash scripts that work on any Unix-like system. cass currently publishes Homebrew archives for Apple Silicon macOS, Linux x86, and Linux ARM; Intel macOS users should use the upstream install script with `--from-source`. bv, caam, and slb are managed by GoReleaser. dcg v0.3.0 currently only has macOS ARM and Linux x86 builds.
+> **Note**: ru and ubs are Bash scripts that work on any Unix-like system. cass currently publishes Homebrew archives for Apple Silicon macOS, Linux x86, and Linux ARM; Intel macOS users should use the upstream install script with `--from-source`. bv, caam, and slb are managed by GoReleaser.
 
 ## Tool Details
 
@@ -162,6 +162,24 @@ ubs --help
 ```
 
 **Supports**: Python, JavaScript, TypeScript, Rust, Go, and more.
+
+### dcg - Destructive Command Guard
+
+Homebrew installs the binary without modifying coding-agent configuration.
+Configure detected hooks explicitly after installation:
+
+```bash
+brew install dicklesworthstone/tap/dcg
+dcg install
+dcg doctor
+```
+
+Test policy decisions without running a command:
+
+```bash
+dcg test "git status"
+dcg test "git reset --hard"
+```
 
 ## Updating Packages
 

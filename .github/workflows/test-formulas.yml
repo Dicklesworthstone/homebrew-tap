@@ -5,11 +5,15 @@ on:
     paths:
       - "Formula/**"
       - "Casks/**"
+      - "scripts/**"
+      - "tests/**"
       - ".github/workflows/test-formulas.yml"
   pull_request:
     paths:
       - "Formula/**"
       - "Casks/**"
+      - "scripts/**"
+      - "tests/**"
   schedule:
     # Weekly Monday 6am UTC - catch dependency/runner updates that break formulas
     - cron: "0 6 * * 1"
@@ -31,6 +35,9 @@ jobs:
         run: |
           chmod +x scripts/validate-formulas.sh
           ./scripts/validate-formulas.sh
+
+      - name: Run updater unit tests
+        run: bash scripts/test-runner.sh unit
 
   audit:
     name: Audit Formulas
@@ -112,7 +119,7 @@ jobs:
 
   install-test-macos-intel:
     name: Install Test (macOS Intel)
-    runs-on: macos-13
+    runs-on: macos-15-intel
     needs: audit
     steps:
       - uses: actions/checkout@v4
@@ -123,7 +130,7 @@ jobs:
       - name: Record platform info
         run: |
           echo "### Platform Info - macOS Intel" >> $GITHUB_STEP_SUMMARY
-          echo "- OS: macOS 13 (Ventura)" >> $GITHUB_STEP_SUMMARY
+          echo "- OS: macOS 15 (Intel)" >> $GITHUB_STEP_SUMMARY
           echo "- Arch: $(uname -m)" >> $GITHUB_STEP_SUMMARY
           echo "- Homebrew: $(brew --version | head -1)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -178,6 +185,9 @@ jobs:
             echo "--- Smoke test ---" | tee -a "$log"
             if brew test "$formula" 2>&1 | tee -a "$log"; then
               echo "Smoke test passed" | tee -a "$log"
+            elif [[ "$tool" == "dcg" ]]; then
+              echo "::error::Smoke test failed for $tool"
+              failed=1
             else
               echo "::warning::Smoke test failed for $tool (non-fatal)"
             fi
@@ -261,6 +271,9 @@ jobs:
             echo "--- Smoke test ---" | tee -a "$log"
             if brew test "$formula" 2>&1 | tee -a "$log"; then
               echo "Smoke test passed" | tee -a "$log"
+            elif [[ "$tool" == "dcg" ]]; then
+              echo "::error::Smoke test failed for $tool"
+              failed=1
             else
               echo "::warning::Smoke test failed for $tool (non-fatal)"
             fi
@@ -344,6 +357,9 @@ jobs:
             echo "--- Smoke test ---" | tee -a "$log"
             if brew test "$formula" 2>&1 | tee -a "$log"; then
               echo "Smoke test passed" | tee -a "$log"
+            elif [[ "$tool" == "dcg" ]]; then
+              echo "::error::Smoke test failed for $tool"
+              failed=1
             else
               echo "::warning::Smoke test failed for $tool (non-fatal)"
             fi
@@ -364,3 +380,20 @@ jobs:
           name: install-logs-linux
           path: /tmp/formula-logs/
           if-no-files-found: ignore
+
+  install-test-dcg-linux-arm:
+    name: Install Test (dcg, Linux ARM64)
+    runs-on: ubuntu-24.04-arm
+    needs: audit
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Install and test dcg formula
+        run: |
+          test "$(uname -m)" = "aarch64"
+          brew install --verbose Formula/dcg.rb
+          dcg --version
+          brew test Formula/dcg.rb

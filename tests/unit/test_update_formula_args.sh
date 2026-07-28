@@ -54,6 +54,36 @@ run_update_with_checksums_json() {
     )
 }
 
+write_dcg_formula() {
+    cat > "$_TEST_DIR/Formula/dcg.rb" <<'FORMULA'
+class Dcg < Formula
+  version "0.6.7"
+
+  on_macos do
+    on_intel do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-x86_64-apple-darwin.tar.xz"
+      sha256 "Not"
+    end
+    on_arm do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-aarch64-apple-darwin.tar.xz"
+      sha256 "Not"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-x86_64-unknown-linux-musl.tar.xz"
+      sha256 "Not"
+    end
+    on_arm do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "Not"
+    end
+  end
+end
+FORMULA
+}
+
 #==============================================================================
 # Tests: argument validation
 #==============================================================================
@@ -452,6 +482,119 @@ FORMULA
 }
 
 #==============================================================================
+# Tests: dcg (four-architecture release)
+#==============================================================================
+
+test_dcg_updates_every_url_and_placeholder_checksum() {
+    setup_formula_env
+    write_dcg_formula
+
+    cat > "$_TEST_DIR/bin/curl" <<'MOCK'
+#!/usr/bin/env bash
+url="${*: -1}"
+case "$url" in
+    *x86_64-apple-darwin*)         echo "1111111111111111111111111111111111111111111111111111111111111111  file" ;;
+    *aarch64-apple-darwin*)        echo "2222222222222222222222222222222222222222222222222222222222222222  file" ;;
+    *x86_64-unknown-linux-musl*)   echo "3333333333333333333333333333333333333333333333333333333333333333  file" ;;
+    *aarch64-unknown-linux-gnu*)   echo "4444444444444444444444444444444444444444444444444444444444444444  file" ;;
+    *) exit 1 ;;
+esac
+MOCK
+    chmod +x "$_TEST_DIR/bin/curl"
+
+    if ! command -v ruby &>/dev/null; then
+        echo "SKIP: ruby not available"
+        return 0
+    fi
+
+    local output exit_code=0
+    output=$(run_update dcg 0.7.0) || exit_code=$?
+
+    assert_equals "0" "$exit_code" "dcg update should succeed"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'version "0.7.0"' "Version updated"
+    local formula
+    formula=$(<"$_TEST_DIR/Formula/dcg.rb")
+    assert_not_contains "$formula" '/v0.6.7/' "Stale URLs removed"
+    assert_not_contains "$formula" 'sha256 "Not"' "Placeholders removed"
+
+    local url_count checksum_count
+    url_count=$(grep -c '/v0.7.0/dcg-' "$_TEST_DIR/Formula/dcg.rb")
+    checksum_count=$(grep -cE 'sha256 "[1234]{64}"' "$_TEST_DIR/Formula/dcg.rb")
+    assert_equals "4" "$url_count" "All four release URLs updated"
+    assert_equals "4" "$checksum_count" "All four checksums updated"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'sha256 "111111' "macOS Intel checksum mapped correctly"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'sha256 "222222' "macOS ARM checksum mapped correctly"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'sha256 "333333' "Linux Intel checksum mapped correctly"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'sha256 "444444' "Linux ARM checksum mapped correctly"
+    assert_contains "$output" "macOS Intel" "Updater reports macOS Intel"
+    assert_contains "$output" "Linux ARM" "Updater reports Linux ARM"
+}
+
+test_dcg_rejects_invalid_release_checksum_without_mutating_formula() {
+    setup_formula_env
+    write_dcg_formula
+
+    cat > "$_TEST_DIR/bin/curl" <<'MOCK'
+#!/usr/bin/env bash
+url="${*: -1}"
+if [[ "$url" == *"x86_64-unknown-linux-musl"* ]]; then
+    echo "not-a-sha256  file.tar.xz"
+else
+    echo "deadbeef0123456789abcdef0123456789abcdef0123456789abcdef01234567  file.tar.xz"
+fi
+MOCK
+    chmod +x "$_TEST_DIR/bin/curl"
+
+    local output exit_code=0
+    output=$(run_update dcg 0.7.0) || exit_code=$?
+
+    assert_not_equals "0" "$exit_code" "Invalid checksum should fail"
+    assert_contains "$output" "invalid SHA256" "Failure identifies malformed checksum"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'version "0.6.7"' "Formula remains unchanged"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'sha256 "Not"' "Placeholders remain unchanged"
+}
+
+test_dcg_rejects_missing_architecture_block_without_mutating_formula() {
+    setup_formula_env
+    cat > "$_TEST_DIR/Formula/dcg.rb" <<'FORMULA'
+class Dcg < Formula
+  version "0.6.7"
+
+  on_macos do
+    on_intel do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-x86_64-apple-darwin.tar.xz"
+      sha256 "Not"
+    end
+    on_arm do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-aarch64-apple-darwin.tar.xz"
+      sha256 "Not"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.6.7/dcg-x86_64-unknown-linux-musl.tar.xz"
+      sha256 "Not"
+    end
+  end
+end
+FORMULA
+
+    if ! command -v ruby &>/dev/null; then
+        echo "SKIP: ruby not available"
+        return 0
+    fi
+
+    local output exit_code=0
+    output=$(run_update dcg 0.7.0) || exit_code=$?
+
+    assert_not_equals "0" "$exit_code" "Missing architecture should fail"
+    assert_contains "$output" "aarch64-unknown-linux-gnu" "Failure names missing asset"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" 'version "0.6.7"' "Formula remains unchanged"
+    assert_file_contains "$_TEST_DIR/Formula/dcg.rb" '/v0.6.7/' "URLs remain unchanged"
+}
+
+#==============================================================================
 # Tests: idempotency
 #==============================================================================
 
@@ -523,6 +666,9 @@ run_test test_cass_fetches_current_release_checksums
 run_test test_cass_prefers_dispatch_payload_checksums
 run_test test_xf_parses_sha256sums_file
 run_test test_cm_updates_three_architectures
+run_test test_dcg_updates_every_url_and_placeholder_checksum
+run_test test_dcg_rejects_invalid_release_checksum_without_mutating_formula
+run_test test_dcg_rejects_missing_architecture_block_without_mutating_formula
 run_test test_idempotent_ru_update
 run_test test_shows_updating_message
 run_test test_supported_tools_in_error_message
