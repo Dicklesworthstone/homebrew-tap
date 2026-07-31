@@ -4,7 +4,7 @@
 class Ru < Formula
   desc "Robust CLI tool for synchronizing GitHub repositories"
   homepage "https://github.com/Dicklesworthstone/repo_updater"
-  url "https://github.com/Dicklesworthstone/repo_updater/releases/download/v1.2.1/ru"
+  url "https://github.com/Dicklesworthstone/repo_updater/releases/download/v1.3.1/ru"
   sha256 "6ae3ae2d850d26c0ad82e3b5e713338f74f2bfd483691e4d09d9d75e00a79b3a"
   license "MIT"
 
