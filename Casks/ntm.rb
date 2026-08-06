@@ -10,22 +10,22 @@ cask "ntm" do
 
   on_macos do
     on_intel do
-      sha256 "2d0f7e4b68c34670599d80f59a498baf17ca0213169a17dd14af7bf6542a8231"
+      sha256 "ab0da621e14eb447d53a18948414e935a339c26b4d85303a7b0ecdd868360995"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_darwin_amd64.tar.gz"
     end
     on_arm do
-      sha256 "d40ee14f2c00d83b9db8ab17554e6ffdc678688d4a5defdf44ba55577ddc936c"
+      sha256 "0e05df7fd97d363040b0416cdfd487df41413874c154e355a903772039571840"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_darwin_arm64.tar.gz"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "51a76b2546abf2a86785a3e51b2b6fbb04ccda91d4f08d0c3ad764387b364c87"
+      sha256 "1edc93d5f8f7eb08ea81ba1391e1138170accddbd9202d903cd6b331abc28448"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_linux_amd64.tar.gz"
     end
     on_arm do
-      sha256 "6395b7e0d97bb6c562053d22ef0b91efaf7533161a4ae692a1adb6f1e2cdbdab"
+      sha256 "bdac52920d9ea193eb124680322679cb8e0e1639f9541d0963916a9c2f6f50df"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_linux_arm64.tar.gz"
     end
   end
