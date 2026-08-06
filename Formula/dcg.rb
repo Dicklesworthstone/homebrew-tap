@@ -4,31 +4,31 @@
 class Dcg < Formula
   desc "Destructive Command Guard - Safety rails for AI coding agents"
   homepage "https://github.com/Dicklesworthstone/destructive_command_guard"
-  version "0.9.2"
+  version "0.9.4"
   # Upstream uses the MIT license with an additional OpenAI/Anthropic rider.
   license :cannot_represent
 
   on_macos do
     on_intel do
-      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.2/dcg-x86_64-apple-darwin.tar.xz"
-      sha256 "ac526f1d38ce23b004088af705f52de2bdbfbdfc16c6aa8e2548a8a86985ca1c"
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.4/dcg-x86_64-apple-darwin.tar.xz"
+      sha256 "8769793c389a83748d6be1a72c96508296523d893db1672f85752519de486cce"
     end
 
     on_arm do
-      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.2/dcg-aarch64-apple-darwin.tar.xz"
-      sha256 "d136c74f8216a1a33f5e0a9ca2528ede5990554af9129ae0f0da15e0be991eb8"
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.4/dcg-aarch64-apple-darwin.tar.xz"
+      sha256 "7760eedabf028fd98b22ca32e8b9637cba34f3ecd8cb5e522b0e3ef81522c45d"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.2/dcg-x86_64-unknown-linux-musl.tar.xz"
-      sha256 "c89d58a8442e9e24cc1b77e1c535ecbc699d8ee28f217bca978aac3f465f6121"
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.4/dcg-x86_64-unknown-linux-musl.tar.xz"
+      sha256 "51f91447e55ffb15a1f32b1a58b9d78ff65f1297e80a5b3b9a253bf0c6b349ae"
     end
 
     on_arm do
-      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.2/dcg-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "2c33809110d1b2467bbf696b5e6230d247bbece3f496d5f934a6666dc2b1fac1"
+      url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v0.9.4/dcg-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "03e2da0c2918489c9c9e6f03c55ef86bf525d7acca4904c20e094c2064ecb0d6"
     end
   end
 
