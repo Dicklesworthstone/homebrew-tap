@@ -41,12 +41,16 @@ class FrankenTts < Formula
 
   def caveats
     <<~EOS
-      Model weights are NOT bundled. Download the pinned
-      Qwen3-TTS-12Hz-0.6B-Base snapshot from Hugging Face into a model
-      directory (see "Getting the model" in the project README), then:
+      Model weights are NOT bundled. Fetch them once (about 2.4 GB,
+      SHA-256 verified, installed to ~/.cache/franken_tts/model):
 
-        FTTS_MAX_FRAMES=120 ftts say "Hello from franken_tts" \\
-          --model <model-dir> --voice <voice.spk> -o hello.wav
+        ftts pull
+
+      Then clone a voice from any recording you have the right to use,
+      and speak:
+
+        ftts enroll voice_memo.m4a --default
+        ftts say "Hello from franken_tts" hello.m4a
 
       This release ships the deliberately unoptimized f32 reference engine
       (roughly 6-7x slower than real time on Apple Silicon). Agent-first
