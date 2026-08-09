@@ -4,28 +4,28 @@
 class FrankenTts < Formula
   desc "Qwen3-TTS voice synthesis in pure Rust - no Python, no ML framework, no GPU"
   homepage "https://github.com/Dicklesworthstone/franken_tts"
-  version "0.1.3"
+  version "0.1.4"
   license "LicenseRef-MIT-OpenAI-Anthropic-Rider"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-darwin_arm64.tar.gz"
-      sha256 "bf8d7d2a38670941eb6239cf7ad3fb988060458ff7f620c3223dee5349157f5e"
+      sha256 "1017e9de5c8c6b2ac3392501ef81415b0ed580922f9629a77ae81651b956684b"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-darwin_amd64.tar.gz"
-      sha256 "18938b9632e69b79ebc106272d58b6e87bff2bf4acbff241785c4c4b8fa95af4"
+      sha256 "6d8ba78adca1bd2049ea845fb2f2af59d317b3e5aa52ec28bbc55b4f2e51f3fb"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-linux_amd64.tar.gz"
-      sha256 "7a0e4d156df790de5c29e110594120688fe58021a1a25e5299e1ebb7ee000115"
+      sha256 "badc9669af4a52e80c6af337996f8b85c731dfce848945e84f1b95a7c30bd91b"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-linux_arm64.tar.gz"
-      sha256 "4ff6b590e5319a2bb93aebea404ac3f6d8ee010556a4faeb60c79cacb4bf39eb"
+      sha256 "2abf8ce40059de5b3c9dd12272b70d5a2b97e9cdd912577650908b3063c52e5d"
     end
   end
 
@@ -46,15 +46,17 @@ class FrankenTts < Formula
 
         ftts pull
 
-      Then clone a voice from any recording you have the right to use,
-      and speak:
+      Speak out of the box with a built-in voice (matt is the default;
+      aria, ember, james, judy, leo, robert also ship in the binary),
+      or clone a voice from any recording you have the right to use:
 
-        ftts enroll voice_memo.m4a --default
         ftts say "Hello from franken_tts" hello.m4a
+        ftts say --voice james "Another voice" hello2.m4a
+        ftts enroll voice_memo.m4a --default
 
-      The binary defaults to the optimized int8 route (0.66-1.05x real
-      time measured on an M4 Pro); FTTS_INT8=0 restores the bit-exact f32
-      reference. Agent-first NDJSON robot mode: ftts robot schema
+      The binary defaults to the optimized int8 route (faster than real
+      time, 1.4-1.6x measured on an M4 Pro); FTTS_INT8=0 restores the
+      bit-exact f32 reference. Agent-first NDJSON robot mode: ftts robot schema
     EOS
   end
 
