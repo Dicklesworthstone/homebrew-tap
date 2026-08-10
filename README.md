@@ -46,6 +46,12 @@ brew install dicklesworthstone/tap/cass
 | **[dcg](https://github.com/Dicklesworthstone/destructive_command_guard)** | Destructive Command Guard - Safety rails for AI coding agents | `brew install dicklesworthstone/tap/dcg` |
 | **[tru](https://github.com/Dicklesworthstone/toon_rust)** | TOON encoder/decoder - Token-Optimized Object Notation | `brew install dicklesworthstone/tap/tru` |
 
+### Speech and Audio
+
+| Tool | Description | Install |
+|------|-------------|---------|
+| **[franken-whisper](https://github.com/Dicklesworthstone/franken_whisper)** | Native Rust Whisper transcription and speaker diarization with agent-first structured output | `brew install dicklesworthstone/tap/franken-whisper` |
+
 ## Platform Support
 
 | Tool | macOS Intel | macOS ARM | Linux x86 | Linux ARM |
@@ -62,6 +68,7 @@ brew install dicklesworthstone/tap/cass
 | slb  | ✅ | ✅ | ✅ | ✅ |
 | dcg  | ✅ | ✅ | ✅ | ✅ |
 | tru  | ✅ | ✅ | ✅ | ✅ |
+| franken-whisper | ✅ | ✅ | ✅ | ✅ |
 
 > **Note**: ru and ubs are Bash scripts that work on any Unix-like system. cass currently publishes Homebrew archives for Apple Silicon macOS, Linux x86, and Linux ARM; Intel macOS users should use the upstream install script with `--from-source`. bv, caam, and slb are managed by GoReleaser.
 
@@ -180,6 +187,21 @@ Test policy decisions without running a command:
 dcg test "git status"
 dcg test "git reset --hard"
 ```
+
+### franken-whisper - Native Speech Transcription
+
+Install the native Rust binaries, then download the hash-pinned Whisper and
+Sortformer model artifacts:
+
+```bash
+brew install dicklesworthstone/tap/franken-whisper
+fw pull all
+fw doctor --json
+fw transcribe recording.m4a
+```
+
+Transcription and speaker diarization use the in-process Rust implementations
+by default. Pass `--no-diarize` when speaker turns are not needed.
 
 ## Updating Packages
 
