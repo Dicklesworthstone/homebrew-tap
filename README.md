@@ -197,7 +197,7 @@ Sortformer model artifacts:
 brew install dicklesworthstone/tap/franken-whisper
 fw pull all
 fw doctor --json
-fw transcribe recording.m4a
+fw transcribe --input recording.m4a
 ```
 
 Transcription and speaker diarization use the in-process Rust implementations
