@@ -4,28 +4,28 @@
 class FrankenTts < Formula
   desc "Qwen3-TTS voice synthesis in pure Rust - no Python, no ML framework, no GPU"
   homepage "https://github.com/Dicklesworthstone/franken_tts"
-  version "0.1.7"
+  version "0.1.8"
   license "LicenseRef-MIT-OpenAI-Anthropic-Rider"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-darwin_arm64.tar.gz"
-      sha256 "2fbcff594c088f419fd23c1fa397110350db43c6c541adc602c7834d492466e6"
+      sha256 "f229b4d392963bb29af8dd3b682525187102bd525640dcf2e895d791c6996542"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-darwin_amd64.tar.gz"
-      sha256 "569af8a2cf2fd1648949b8343f61fb4092cc7c945cd72a4bfa7291604e047aa6"
+      sha256 "51f873cca15eccb3090e11b62b68499d2a6c84f0b09f54292513dccf0c974ed2"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-linux_amd64.tar.gz"
-      sha256 "a245b73c54cf901b5309b433e316571a29e47cfeeb767df423c3383fe0c54378"
+      sha256 "2bd9ed40a2f098c5cb1ea2d50ec8cf178ea81fc260b92c9eb770f2ef95872909"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-linux_arm64.tar.gz"
-      sha256 "9ca3686cfbda28f244a5de337113d3980045a60dc61c9bc6b7a9ea98decb0756"
+      sha256 "c0c6a79513340628ab11069220189d1b86fd8caf5f42f4ebd043af7773fab229"
     end
   end
 
