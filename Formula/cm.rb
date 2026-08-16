@@ -10,18 +10,18 @@ class Cm < Formula
   on_macos do
     on_intel do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-macos-x64"
-      sha256 "84df92c40f8a2de35f443a861d8071458d3e756af68eb09f60f00f2c62bf0995"
+      sha256 "67d580ded765e294eba962e43863a75a4651938be3c7d0c138141b112ed03048"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-macos-arm64"
-      sha256 "64c4bf7d353fa2495f05fd23862482fdc6586821d9752b912fddce8989d1d276"
+      sha256 "fe320a0fa79a2cd82e998a6202164404110b2b4c412020e21e40c5a9f0b37205"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-linux-x64"
-      sha256 "6163c96e75a626227a9cf3e91ebd54fe81e8ad79fa3170b52e2d18b20f0096aa"
+      sha256 "da92066d85e1ce193b89b344ff46cc41e5d6c0dfdb50f5cff451035a27e81383"
     end
     # NOTE: Linux ARM builds not currently available
   end
