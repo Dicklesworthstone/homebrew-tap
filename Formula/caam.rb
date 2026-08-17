@@ -5,13 +5,13 @@
 class Caam < Formula
   desc "CLI tool for managing AI coding agent accounts and configurations"
   homepage "https://github.com/Dicklesworthstone/coding_agent_account_manager"
-  version "0.1.15"
+  version "0.1.16"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.15/caam_0.1.15_darwin_amd64.tar.gz"
-      sha256 "b16c5f101f9ad2e003c6a5fa05a7e51e4b168dea42c8db8368fb0998cf15028d"
+      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.16/caam_0.1.16_darwin_amd64.tar.gz"
+      sha256 "d30b9e4d12c3247380fd5f603dd97386296368a56822c8e6eea9acc38b26634e"
 
       define_method(:install) do
         bin.install "caam"
@@ -19,8 +19,8 @@ class Caam < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.15/caam_0.1.15_darwin_arm64.tar.gz"
-      sha256 "edd27883e60c58fc5225a3d428cbef589fcc314444b31d1cf1590461e44cf711"
+      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.16/caam_0.1.16_darwin_arm64.tar.gz"
+      sha256 "5eb00eee2a035b13f2db782327cec2072727c3d558a546c7e3a75574df991e8e"
 
       define_method(:install) do
         bin.install "caam"
@@ -31,16 +31,16 @@ class Caam < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.15/caam_0.1.15_linux_amd64.tar.gz"
-      sha256 "c7075f387a41d39a7b96fdb5ac0dbcb39c996343fc3b6abb345b220aac676074"
+      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.16/caam_0.1.16_linux_amd64.tar.gz"
+      sha256 "31cce532da6170c713178f438d29107eb459a2f251b4cfcd7554bf2d52169057"
       define_method(:install) do
         bin.install "caam"
         generate_completions_from_executable(bin/"caam", "completion")
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.15/caam_0.1.15_linux_arm64.tar.gz"
-      sha256 "8a50053318e408dbbeff35e8242a5560f8411db13a086476722b13d3fd212ba2"
+      url "https://github.com/Dicklesworthstone/coding_agent_account_manager/releases/download/v0.1.16/caam_0.1.16_linux_arm64.tar.gz"
+      sha256 "9f28acb5266dcd2cbb00e2a97409699f526f2e91bf8601cf7f778e94651b4bed"
       define_method(:install) do
         bin.install "caam"
         generate_completions_from_executable(bin/"caam", "completion")
