@@ -6,26 +6,26 @@
 # ntm_<version>_darwin_all.tar.gz, a universal binary that recent releases have
 # not shipped, so the cask was broken for every version after 1.18.3.
 cask "ntm" do
-  version "1.27.0"
+  version "1.28.0"
 
   on_macos do
     on_intel do
-      sha256 "8e66f5398c119db3cadf3507916b6ca8acaf413e313a864d31d6dbc1818e7daf"
+      sha256 "c40097f937669b57c0f66dd94b4de1e65191a609d7d7b678da48fa84422494a7"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_darwin_amd64.tar.gz"
     end
     on_arm do
-      sha256 "dbaa2b633376dc8b2e564da92bd7847e37fb79c2649c728513d46a4a32db522e"
+      sha256 "ced5917b5e85a2d4e17c8d0fc5aeb31e84c1ffcc842bfa217b6b0a67de31a370"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_darwin_arm64.tar.gz"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "740834b806bbca7959d1958a636a42b27bf7061e179a569aea53a62514f8aed2"
+      sha256 "9bb80190a165a7b05e5b61dfa014f821a6b6f4de99adf5c8d947da852144fa32"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_linux_amd64.tar.gz"
     end
     on_arm do
-      sha256 "de98a2f6a558cd9f770c76ca6e8a27f027b1af529c51f307fee41a13965826d6"
+      sha256 "9346661dc875bb3315019e38cd065b455df954fb15ba0598b4d2bdcccef2b674"
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_linux_arm64.tar.gz"
     end
   end
