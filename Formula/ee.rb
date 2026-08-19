@@ -5,29 +5,30 @@
 class Ee < Formula
   desc "Durable, local-first, explainable memory for coding agents"
   homepage "https://github.com/Dicklesworthstone/eidetic_engine_cli"
+  version "0.14.1"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.12.0/ee-aarch64-apple-darwin.tar.xz"
-      sha256 "2a80b26b3fa27f3dd0f1443e3e8defa65795d6c2055f9b44d830223b977edb33"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.1/ee-aarch64-apple-darwin.tar.xz"
+      sha256 "2ec3eed04efa36dddbf1a1ab4c44fff0a3f8d163ad3c6c124e5df045b01d2d3c"
     end
 
     on_intel do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.12.0/ee-x86_64-apple-darwin.tar.xz"
-      sha256 "c7e155c4bd42210b50e646a3efd75dad6eee07253442796a5f23c8752f58496c"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.1/ee-x86_64-apple-darwin.tar.xz"
+      sha256 "94d1e15cd25d625d723e3a34ca3fafbb1aed62daeecd7a45c4a11250da7e974a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.12.0/ee-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "c9f858a71112bb69b5302a241bd060f93b0cdc23425a022822b51f311a7effbc"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.1/ee-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "5e1c7ceb695ab1f21608d7c2bcab323afbef49bdcf9ef45074cfc22169d3362e"
     end
 
     on_intel do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.12.0/ee-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "18d8acee83c87908906235eb4c7d02cce7235374a1de09091682b7eae8c90e85"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.1/ee-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "b3962edde10a11039aeb8d97219455fc641e71595842ba4c5cde52435572050b"
     end
   end
 
