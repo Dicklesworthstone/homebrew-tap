@@ -5,21 +5,21 @@
 class Bv < Formula
   desc "Graph-aware task management TUI for beads projects"
   homepage "https://github.com/Dicklesworthstone/beads_viewer"
-  version "0.18.0"
+  version "0.21.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.18.0/bv_darwin_amd64.tar.gz"
-      sha256 "c1a33ea9a74b4fc67f796c83c67ea3f0be4a6f5d9eac7f4072f945118e31e779"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.0/bv_darwin_amd64.tar.gz"
+      sha256 "32e2586ffb372d37520bcf29bf52f0b663851fa9dde06965ef40a3b8af5637a2"
 
       define_method(:install) do
         bin.install "bv"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.18.0/bv_darwin_arm64.tar.gz"
-      sha256 "eba2639a9be382dd9fe4dff04489fc84720363815e26d5883fdbfb02c12ffb80"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.0/bv_darwin_arm64.tar.gz"
+      sha256 "aad50555ae7321df3fb1ea03d2732d6e992e2a2f19269cd593d49638a2e84263"
 
       define_method(:install) do
         bin.install "bv"
@@ -29,15 +29,15 @@ class Bv < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.18.0/bv_linux_amd64.tar.gz"
-      sha256 "b8df409c380cc4db9f07cf0329ee8a4d8e669be812528ef1b3b2e0b1260e9145"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.0/bv_linux_amd64.tar.gz"
+      sha256 "f050c800fec9aba04138ae7d978ee8a6f2aa3ac76df523fe39c42ecd77c85681"
       define_method(:install) do
         bin.install "bv"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.18.0/bv_linux_arm64.tar.gz"
-      sha256 "d5734864f78a0d3f1986957deea71a88bd92342f99d38c37e1667d0bdd9b9537"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.0/bv_linux_arm64.tar.gz"
+      sha256 "53521f1e8b7e8a8f11391303f209e0446b4613655488ef0ff1022e8627ea0984"
       define_method(:install) do
         bin.install "bv"
       end
