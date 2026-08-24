@@ -4,28 +4,28 @@
 class Tru < Formula
   desc "TOON encoder/decoder - Token-Optimized Object Notation"
   homepage "https://github.com/Dicklesworthstone/toon_rust"
-  version "0.2.3"
+  version "0.2.4"
   license "MIT"
 
   on_macos do
     on_intel do
       url "https://github.com/Dicklesworthstone/toon_rust/releases/download/v#{version}/toon-darwin-amd64.tar.xz"
-      sha256 "9f60a8b9ae75a890412b16fe5e4e2b2966dddac145b7c98b9490e7f66ad922f1"
+      sha256 "e1af1cca9ea99df2eb85420fe5289c6d4adddad001b778a4c285e249acc57df8"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/toon_rust/releases/download/v#{version}/toon-darwin-arm64.tar.xz"
-      sha256 "f5727108b549e135cace95b916c9d1b1f8ceb2cbd8b18ec3c6e3bbee9369590f"
+      sha256 "fe163da70b7f504ad489aeea1e8887971df6b526b6bcdd0f37add9cdab7c2fce"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/toon_rust/releases/download/v#{version}/toon-linux-amd64.tar.xz"
-      sha256 "069e4b7f4a10c46f0f06fcf85f8511638a831b931579edf6cae606d27d11f0bf"
+      sha256 "af6e21187c5afb6ec993b9e668d13d3b785f55571b67ced1c1e24bb53f0b1b62"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/toon_rust/releases/download/v#{version}/toon-linux-arm64.tar.xz"
-      sha256 "41b6cbae1358e62508e3833d84b16593e04716b4f1ee1fbd832655c632ad8877"
+      sha256 "3ebc625a27ccf565eb649565aefef505ab40cddb63648a6bc0c8c54ae5bf9f57"
     end
   end
 
