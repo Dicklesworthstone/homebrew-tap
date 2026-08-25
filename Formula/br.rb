@@ -21,14 +21,28 @@ class Br < Formula
     end
   end
 
+  # Linux uses the musl artifacts deliberately, not the gnu ones.
+  #
+  # The gnu builds reference GLIBC_2.39 (207 symbols on amd64, 209 on arm64),
+  # so they fail to start on Debian 12 (2.36), Ubuntu 22.04 LTS (2.35),
+  # RHEL 9 (2.34) and Amazon Linux 2023 (2.34) — a large share of Linux
+  # Homebrew users. The musl builds are genuinely static:
+  # `objdump -T` reports ZERO GLIBC references on both architectures, and both
+  # execute and print their version. They therefore run everywhere the gnu ones
+  # do, plus everywhere the gnu ones do not.
+  #
+  # Note `file` reports Rust musl builds as "static-pie linked", not
+  # "statically linked", so a grep for the latter false-negatives here; the
+  # objdump GLIBC count is the reliable check.
+  # Upstream: Dicklesworthstone/beads_rust#444
   on_linux do
     on_intel do
-      url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-linux_amd64.tar.gz"
-      sha256 "b5db20c793f8871862591a23b7be98cfc8a61acab3c9d9197d375c83df51f444"
+      url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-linux_musl_amd64.tar.gz"
+      sha256 "b78c07ef7b809ed50b5ab5388203e4075542766551a5f8e6f09ba61812b28dfe"
     end
     on_arm do
-      url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-linux_arm64.tar.gz"
-      sha256 "5def39c141e93a7e3966b0ef04dee1d4f2b3a4f8c456f010e0296c87edef65ce"
+      url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-linux_musl_arm64.tar.gz"
+      sha256 "cd00edbad9738085741f1cbdd645ae8183c9b9aaf8411f1c7520447d2bfd73bb"
     end
   end
 
