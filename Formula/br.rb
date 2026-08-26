@@ -7,26 +7,24 @@
 class Br < Formula
   desc "Agent-first issue tracker with SQLite + JSONL sync"
   homepage "https://github.com/Dicklesworthstone/beads_rust"
-  version "0.4.1"
+  version "0.5.2"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-darwin_arm64.tar.gz"
-      sha256 "117ce730a34ac2c24cb2ee20477e2df75a5cfadc9f7522fd0a51d977d3ec12e4"
+      sha256 "d338990921265761426e7d2c81c7b33ea972989af28c24610d4090ccf44e58f2"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-darwin_amd64.tar.gz"
-      sha256 "52cb0294deb91f71523cdbd9508e1e98249f6152f598c2b05d9529a1c370a0dc"
+      sha256 "ad2c465ae39ea2ef8e4345436a21cd774bf5cf6de4c97baf1cac22b144b81850"
     end
   end
 
   # Linux uses the musl artifacts deliberately, not the gnu ones.
   #
-  # The gnu builds reference GLIBC_2.39 (207 symbols on amd64, 209 on arm64),
-  # so they fail to start on Debian 12 (2.36), Ubuntu 22.04 LTS (2.35),
-  # RHEL 9 (2.34) and Amazon Linux 2023 (2.34) — a large share of Linux
-  # Homebrew users. The musl builds are genuinely static:
+  # From v0.5.2 the gnu builds are zigbuild-pinned to a GLIBC_2.28 floor, but
+  # the musl builds remain the safer default: genuinely static with
   # `objdump -T` reports ZERO GLIBC references on both architectures, and both
   # execute and print their version. They therefore run everywhere the gnu ones
   # do, plus everywhere the gnu ones do not.
@@ -38,11 +36,11 @@ class Br < Formula
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-linux_musl_amd64.tar.gz"
-      sha256 "b78c07ef7b809ed50b5ab5388203e4075542766551a5f8e6f09ba61812b28dfe"
+      sha256 "927c35ec2a9e0c7bf5c91b52729d7b5da38ebd34e90d9de5f5fbaed2a5307433"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/beads_rust/releases/download/v#{version}/br-#{version}-linux_musl_arm64.tar.gz"
-      sha256 "cd00edbad9738085741f1cbdd645ae8183c9b9aaf8411f1c7520447d2bfd73bb"
+      sha256 "3299d6d876d6f79407ef6800f0120d5a3e834968a175bb5e0b87f41c8d7bd20c"
     end
   end
 
