@@ -9,16 +9,16 @@ class Bv < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.2/bv_darwin_amd64.tar.gz"
-      sha256 "a7d74fcbc1072ee1c4038dc3af137de882f34fc17f6316d5a2865d415727b8f4"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.22.0/bv_darwin_amd64.tar.gz"
+      sha256 "b945397b3c6bb9e0adaf66effaa524c3aaf81bd061d14ca2efe6b5ce914aa0f2"
 
       define_method(:install) do
         bin.install "bv"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.2/bv_darwin_arm64.tar.gz"
-      sha256 "1da8f6d028c5ec02c68ee923ce3b8c6c2efb8c7214a474208062098e21542d29"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.22.0/bv_darwin_arm64.tar.gz"
+      sha256 "1dbaf517a39eb8af3bf996ab54b189ec5c04963b88b5f4be48bdd9261279fa5e"
 
       define_method(:install) do
         bin.install "bv"
@@ -28,15 +28,15 @@ class Bv < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.2/bv_linux_amd64.tar.gz"
-      sha256 "e5cf775a5e945fb9b29b06e45b2d14ab69788daa70d466d78d3c20cf99e48543"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.22.0/bv_linux_amd64.tar.gz"
+      sha256 "e0b6c8b6d3230c601b19e19264b321e5ee513e6e2adacad7ef4aa29ecad9dae9"
       define_method(:install) do
         bin.install "bv"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.21.2/bv_linux_arm64.tar.gz"
-      sha256 "93f2d5bd1750bee8d1c66721e85a91747417a43b9da8166487a7fd867f8f323e"
+      url "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v0.22.0/bv_linux_arm64.tar.gz"
+      sha256 "23d451b87bb9dccfb94fab416b0243d107919d9d56458087475afda5a617aa89"
       define_method(:install) do
         bin.install "bv"
       end
