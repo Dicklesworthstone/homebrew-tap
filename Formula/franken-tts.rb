@@ -4,28 +4,28 @@
 class FrankenTts < Formula
   desc "Qwen3-TTS voice synthesis in pure Rust - no Python, no ML framework, no GPU"
   homepage "https://github.com/Dicklesworthstone/franken_tts"
-  version "0.1.9"
+  version "0.1.10"
   license "LicenseRef-MIT-OpenAI-Anthropic-Rider"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-darwin_arm64.tar.gz"
-      sha256 "90ad998de80210f09a88211fa76e4dd53d21def1fbc4e64496e7111bdd9f1f81"
+      sha256 "35e580681618633c257fc8c403e87f9cff562df51fefa2269e0c624528fed8b3"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-darwin_amd64.tar.gz"
-      sha256 "9d066adfdfb52a0dbf69df1cf1219b51a3e71f0718573bb273d58c74c9719f94"
+      sha256 "77abe469d01c443e660ef61e4e2849b659532c5a228d40562670017fa2541345"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-linux_amd64.tar.gz"
-      sha256 "3162ce8494f413da17200ce01b347c4766c0f352b6d375399e8c44cb314df36f"
+      sha256 "ae87109c7536344f2fa735c5ed8afa4fc578a81da16c5a2a8ae7c5881a7d6c6f"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/franken_tts/releases/download/v#{version}/franken_tts-#{version}-linux_arm64.tar.gz"
-      sha256 "248ea849e96759ab66eb97ba571a5dc5098277b158067f40595b5e3737c7756a"
+      sha256 "18aadfb8344bdeacd37345d2eb9c9fc80cc48fc07265957ba17420cdf9821a36"
     end
   end
 
@@ -46,9 +46,10 @@ class FrankenTts < Formula
 
         ftts pull
 
-      Speak out of the box with a built-in voice (matt is the default;
-      aria, ember, james, judy, leo, robert also ship in the binary),
-      or clone a voice from any recording you have the right to use:
+      Speak out of the box with 18 built-in voices (matt is the default;
+      aria, ember, james, judy, leo, robert, liam, anthony, russell, steve,
+      daniel, meryl, laurence, jack, michael, jodie, denzel), or clone a voice
+      from any recording you have the right to use:
 
         ftts say "Hello from franken_tts" hello.m4a
         ftts say --voice james "Another voice" hello2.m4a
