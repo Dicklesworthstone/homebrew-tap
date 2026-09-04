@@ -52,6 +52,12 @@ brew install dicklesworthstone/tap/cass
 |------|-------------|---------|
 | **[franken-whisper](https://github.com/Dicklesworthstone/franken_whisper)** | Native Rust Whisper transcription and speaker diarization with agent-first structured output | `brew install dicklesworthstone/tap/franken-whisper` |
 
+### Installer Verification
+
+| Tool | Description | Install |
+|------|-------------|---------|
+| **[automated_flywheel_setup_checker](https://github.com/Dicklesworthstone/automated_flywheel_setup_checker)** | Automated Flywheel Setup Checker - Runs every ACFS installer in an isolated Docker container, classifies failures, and can ask Claude for remediation | `brew install dicklesworthstone/tap/automated_flywheel_setup_checker` |
+
 ## Platform Support
 
 | Tool | macOS Intel | macOS ARM | Linux x86 | Linux ARM |
@@ -69,6 +75,7 @@ brew install dicklesworthstone/tap/cass
 | dcg  | ✅ | ✅ | ✅ | ✅ |
 | tru  | ✅ | ✅ | ✅ | ✅ |
 | franken-whisper | ✅ | ✅ | ✅ | ✅ |
+| automated_flywheel_setup_checker | - | - | ✅ | ✅ |
 
 > **Note**: ru and ubs are Bash scripts that work on any Unix-like system. cass currently publishes Homebrew archives for Apple Silicon macOS, Linux x86, and Linux ARM; Intel macOS users should use the upstream install script with `--from-source`. bv, caam, and slb are managed by GoReleaser.
 

@@ -8,6 +8,18 @@ Repository: <https://github.com/Dicklesworthstone/homebrew-tap>
 
 ---
 
+## 2026-09-04 -- ntm v1.32.0, automated_flywheel_setup_checker v0.1.0
+
+### Formula additions
+
+- **automated_flywheel_setup_checker** (Automated Flywheel Setup Checker) added at **v0.1.0**: Linux x86_64 and ARM64 archives from the dsr-published release (`automated_flywheel_setup_checker-<version>-linux-<arch>.tar.gz`), SHA256 checksums copied from the release's `SHA256SUMS`. No macOS build is published yet, so the formula carries only the Linux stanzas.
+
+### Formula updates
+
+- **ntm** cask and formula updated to **v1.32.0** (both had been left at 1.30.0 while v1.31.0 shipped, the bd-o82m7 failure mode): version and all four `sha256` values (darwin/linux x amd64/arm64) refreshed from the release's `SHA256SUMS`. Updated by hand, as `dsr release formulas` rewrites URLs but not checksums.
+
+---
+
 ## 2026-05-14 -- br v0.2.10
 
 ### Formula updates
