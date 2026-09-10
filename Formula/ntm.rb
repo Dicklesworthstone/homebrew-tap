@@ -7,28 +7,28 @@
 class Ntm < Formula
   desc "Named Tmux Manager - orchestrate AI coding agents in tmux sessions"
   homepage "https://github.com/Dicklesworthstone/ntm"
-  version "1.32.0"
+  version "1.33.1"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_darwin_arm64.tar.gz"
-      sha256 "0d16031de93723ef8f9e82d2204338978b7e5d6bf5d14274254a42992cd7aaf3"
+      sha256 "8f6534cf97d9c63350e6658d66abee946849df7d1b0ce6b0656f7978653a7079"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_darwin_amd64.tar.gz"
-      sha256 "0d463dbc590125d153ba8e52f1b3ccf8e320d47069226964227ead7334302913"
+      sha256 "128f5579774d3d0bc495b0c27c141b451db8c824aba6f12235213dbbd655f03d"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_linux_amd64.tar.gz"
-      sha256 "899b1e8a01f661b8ee0b260c28251b750c0c65da75f01b29c9f888b9d7171b8e"
+      sha256 "bcced4d10d6c5335748cd65d180ef65b83f9c2019d1674aee49e77a75424e4e9"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/ntm/releases/download/v#{version}/ntm_#{version}_linux_arm64.tar.gz"
-      sha256 "50d68201a205fd049ed041d0556ea6173755b95dcbc974b2b5555f2790feb8c5"
+      sha256 "afd0b5a5e5470888effc70f4c94de4aad84847e1d6f3e0c3e3000aeac7adf879"
     end
   end
 

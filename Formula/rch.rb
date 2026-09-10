@@ -1,24 +1,24 @@
 class Rch < Formula
   desc "Remote Compilation Helper for AI coding agents"
   homepage "https://github.com/Dicklesworthstone/remote_compilation_helper"
-  version "1.0.57"
+  version "1.0.64"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/remote_compilation_helper/releases/download/v#{version}/rch-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "eb669492b8189f405415c6262614b52febff292711690178d95d882c2f165782"
+      sha256 "8162771c355c65a8a0e9bf6956344c3ad9cf31994f258113fabc1ce6aeb641d9"
     end
-    # No Intel macOS build is published for rch v1.0.57.
+    # No Intel macOS build is published for rch v1.0.64.
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/remote_compilation_helper/releases/download/v#{version}/rch-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "7c50a8b3b86528c09d4b4d290e00b9ed3d8c3de8a17d37528c361a3b03d7609d"
+      sha256 "c6699aaadb1bbb19b1f9b9173b2af2368dee1b566000d9c568574bec0d2f593d"
     end
 
-    # No Linux aarch64 build is published for rch v1.0.57.
+    # No Linux aarch64 build is published for rch v1.0.64.
   end
 
   def install

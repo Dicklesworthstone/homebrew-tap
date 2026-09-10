@@ -8,6 +8,25 @@ Repository: <https://github.com/Dicklesworthstone/homebrew-tap>
 
 ---
 
+## 2026-09-09 -- ntm v1.33.1, dcg v0.14.2, rch v1.0.64, ubs v5.4.1, mcp-agent-mail v0.3.35
+
+### Formula updates
+
+Catch-up pass over everything the tap had been left behind on. Every `sha256`
+below was copied from the corresponding release's own `SHA256SUMS` /
+`.sha256` sidecar and then re-verified by downloading all 19 published
+archives and hashing them; none was recomputed from a local build.
+
+- **ntm** cask and formula updated to **v1.33.1** (they were still at 1.32.0 while 1.33.0 and 1.33.1 shipped -- the same bd-o82m7 failure mode recorded for the 1.31.0 miss). All four `sha256` values refreshed.
+- **dcg** updated to **v0.14.2**. The four release URLs also stopped hardcoding the tag and now interpolate `#{version}`, so the version stanza and the download paths can no longer drift apart -- that duplicated literal is what let 0.14.0 sit here after 0.14.1 and 0.14.2 shipped.
+- **rch** updated to **v1.0.64**. Still macOS ARM and Linux x86_64 only; the two "no build published" comments were retagged to the current version.
+- **ubs** updated to **v5.4.1**. The source moved from the mutable `raw.githubusercontent.com/.../<tag>/ubs` path to the immutable release asset, which is what the release's `SHA256SUMS` actually covers (both are byte-identical at v5.4.1, hash `418b2d20...`). Homebrew derives the version from that URL, so there is no separate `version` stanza to fall out of sync. Also added the trailing newline the file had always been missing.
+- **mcp-agent-mail** updated to **v0.3.35**. v0.3.35 stopped publishing the `.tar.gz` duplicates -- only `.tar.xz` (plus the Windows `.zip`) ship now -- so all four URLs moved to `.tar.xz`. Archive layout is unchanged: `mcp-agent-mail` and `am` sit at the archive root.
+
+**bv** was already current at v0.24.1 and was not touched. **casr** (v0.4.1) and **aadc** (v0.1.1) have published releases but no formula in this tap, so there was nothing to bump; adding them is a separate decision.
+
+---
+
 ## 2026-09-04 -- ntm v1.32.0, automated_flywheel_setup_checker v0.1.0
 
 ### Formula additions
