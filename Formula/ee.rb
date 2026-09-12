@@ -5,30 +5,30 @@
 class Ee < Formula
   desc "Durable, local-first, explainable memory for coding agents"
   homepage "https://github.com/Dicklesworthstone/eidetic_engine_cli"
-  version "0.14.5"
+  version "0.15.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.5/ee-aarch64-apple-darwin.tar.xz"
-      sha256 "c0450fa922e0a1856f1b3e164d2b80a44bd115be9f7974170684e972de8b453a"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.15.0/ee-aarch64-apple-darwin.tar.xz"
+      sha256 "3fd603c14484e97113b68d36799cc3a55ac970f0cf74ed78af3dd36a3b65cb48"
     end
 
     on_intel do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.5/ee-x86_64-apple-darwin.tar.xz"
-      sha256 "c1c1750d0fae2ae8871f5603850d47d17bd738d996ec4fb425b247f01411fe6f"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.15.0/ee-x86_64-apple-darwin.tar.xz"
+      sha256 "82eb6c70a0dd15ff465fb32fea8332471e245bc630b4225c5cca7baafd4333d2"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.5/ee-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "71c95a6e1a040a5c2b58657c5cc1148a8757f1ac529b67623af56c18f4244941"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.15.0/ee-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "47adf6a20e0d7c1cea1a7e3eeff16abffdbed8e2065317ce9f1053cd01158b2b"
     end
 
     on_intel do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.14.5/ee-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "d53116dcb17f073cf9c2ffc890680ddabd737ba03eb03663dba0ce4045aa330f"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.15.0/ee-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "e9e7c0fe4ec609a3a262a427da8df25e94e1a0bf422c3b1f1d56ab4fbdb2cdcc"
     end
   end
 
