@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # Homebrew formula for br - Agent-first issue tracker
@@ -43,6 +44,22 @@ class Br < Formula
     bin.install "br"
     doc.install "LICENSE"
     generate_completions_from_executable(bin/"br", "completions")
+  end
+
+  def caveats
+    <<~EOS
+      br is an agent-first issue tracker that stores issues in both
+      SQLite (for speed) and JSONL (for git-friendliness).
+
+      Quick start:
+        br init                  # Initialize in current project
+        br create "Fix the bug"  # Create an issue
+        br list                  # List all issues
+        br doctor                # Run diagnostics
+
+      For AI agents, use --json flag:
+        br list --json
+    EOS
   end
 
   test do
