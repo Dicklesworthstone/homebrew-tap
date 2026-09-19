@@ -7,28 +7,28 @@
 class Fsqlite < Formula
   desc "SQLite-compatible database with MVCC concurrent writers (SQL shell)"
   homepage "https://github.com/Dicklesworthstone/frankensqlite"
-  version "0.3.9"
+  version "0.4.4"
   license "MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/frankensqlite/releases/download/v#{version}/fsqlite-#{version}-darwin_arm64.tar.gz"
-      sha256 "77e2fc67840c1a6177e8198cf4a2ea4b78cc7165483205540be347220d689970"
+      sha256 "b3cbe899995006363354f647379a2f1ff26f9f9f23ff5c5deb9b2ab7236ced33"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/frankensqlite/releases/download/v#{version}/fsqlite-#{version}-darwin_amd64.tar.gz"
-      sha256 "76edffedee91a26305b4515c5cf856bbcdef6987e885bfd7ee86645e88818927"
+      sha256 "5e4253f8295a8c743e2f4d0b5d37ee8106f07d2362135cc45ccbd98185387d6c"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/frankensqlite/releases/download/v#{version}/fsqlite-#{version}-linux_amd64.tar.gz"
-      sha256 "84428e28434a5d25e14166f6f124306a35a3d91fe1ebfad3f890699cdb0d2ddf"
+      sha256 "11e8060341aa74cd739069ec32dad81352c8dd1cc4364267047a7adfa5ac8b50"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/frankensqlite/releases/download/v#{version}/fsqlite-#{version}-linux_arm64.tar.gz"
-      sha256 "270ce2e518e615a5289291b39477bc1f44ae6af9a2941aa4bf5f88e499e5250a"
+      sha256 "5062884edeede0f6ad2bb3c1ec38e8f0ff4153532e141dd2c86161937d57d994"
     end
   end
 
