@@ -4,31 +4,31 @@
 class Dcg < Formula
   desc "Destructive Command Guard - Safety rails for AI coding agents"
   homepage "https://github.com/Dicklesworthstone/destructive_command_guard"
-  version "0.14.2"
+  version "0.14.4"
   # Upstream uses the MIT license with an additional OpenAI/Anthropic rider.
   license :cannot_represent
 
   on_macos do
     on_intel do
       url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v#{version}/dcg-x86_64-apple-darwin.tar.xz"
-      sha256 "2f0d39b036ea79a81216eb0e200efde618181a027de5fdb3323b1d095c4dcfcf"
+      sha256 "d9b4e2e565f1e1853039b7c956fa4ce7576c7bb641382fe41ec44a0deabb5f07"
     end
 
     on_arm do
       url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v#{version}/dcg-aarch64-apple-darwin.tar.xz"
-      sha256 "b0d116c5ca75cfe6ec412ebb7bd5f3a18636cb4e1441550ca90dd5a03354ab49"
+      sha256 "b704fe0190bfeec51bc264a573fa3d620590286b2b2b63b2ca2293aa24aad013"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v#{version}/dcg-x86_64-unknown-linux-musl.tar.xz"
-      sha256 "5514434060be3d6dcdb0b8f47b35ef754a83d27e9c4629f28052f5ad73eb7603"
+      sha256 "09daf765e21457a756e69cc9f8bce41635836c6b958f5b27c7a6a6a376cbde21"
     end
 
     on_arm do
       url "https://github.com/Dicklesworthstone/destructive_command_guard/releases/download/v#{version}/dcg-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "c692cb944e43eac468d3bfc498fbcc08bde7fde202fb6cf34ca3ed119140d322"
+      sha256 "0cb6a4e851bb1626807e1c5fbfd6d565275383a7624228678f858570bf416e6f"
     end
   end
 
