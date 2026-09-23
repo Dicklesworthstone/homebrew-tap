@@ -7,8 +7,8 @@ cask "franken-code-browser" do
   desc "Spatial source browser with a native Metal atlas"
   homepage "https://github.com/Dicklesworthstone/franken_code_browser"
 
-  depends_on macos: :sonoma
   depends_on arch: :arm64
+  depends_on macos: :sonoma
 
   app "FrankenCodeBrowser.app"
 end
