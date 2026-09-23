@@ -39,6 +39,12 @@ brew install dicklesworthstone/tap/cass
 | **[ru](https://github.com/Dicklesworthstone/repo_updater)** | Repo Updater - Robust CLI for synchronizing GitHub repositories to local projects directory | `brew install dicklesworthstone/tap/ru` |
 | **[ubs](https://github.com/Dicklesworthstone/ultimate_bug_scanner)** | Ultimate Bug Scanner - Comprehensive code analysis for bugs and security issues | `brew install dicklesworthstone/tap/ubs` |
 
+### Native Mac Apps
+
+| App | Description | Install |
+|-----|-------------|---------|
+| **[FrankenCodeBrowser](https://github.com/Dicklesworthstone/franken_code_browser)** | Spatial source browser with a native Metal atlas (Apple Silicon, macOS 14+) | `brew install --cask dicklesworthstone/tap/franken-code-browser` |
+
 ### Safety & Encoding
 
 | Tool | Description | Install |
@@ -75,6 +81,7 @@ brew install dicklesworthstone/tap/cass
 | dcg  | ✅ | ✅ | ✅ | ✅ |
 | tru  | ✅ | ✅ | ✅ | ✅ |
 | franken-whisper | ✅ | ✅ | ✅ | ✅ |
+| franken-code-browser | - | ✅ | - | - |
 | automated_flywheel_setup_checker | - | - | ✅ | ✅ |
 
 > **Note**: ru and ubs are Bash scripts that work on any Unix-like system. cass currently publishes Homebrew archives for Apple Silicon macOS, Linux x86, and Linux ARM; Intel macOS users should use the upstream install script with `--from-source`. bv, caam, and slb are managed by GoReleaser.
