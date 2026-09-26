@@ -5,28 +5,28 @@
 class Slb < Formula
   desc "Simultaneous Launch Button - Two-person rule for dangerous commands"
   homepage "https://github.com/Dicklesworthstone/slb"
-  version "0.4.1"
+  version "0.5.2"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.4.1/slb_0.4.1_darwin_amd64.tar.gz"
-      sha256 "6ac4ab8871214942bc3edde176b3605f84468106d99b8a19fb969f082da6608d"
+      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.5.2/slb_0.5.2_darwin_amd64.tar.gz"
+      sha256 "23ae548fc44b8a4df3aa9c0dd72151316443051252152864e18e9c42d20c21bc"
     end
     on_arm do
-      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.4.1/slb_0.4.1_darwin_arm64.tar.gz"
-      sha256 "d657a1818ceb928f412b9138abb9eda171b65745929fa3389aed397f2e2b2de6"
+      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.5.2/slb_0.5.2_darwin_arm64.tar.gz"
+      sha256 "e6e425605df4ea01fef10c701a139d282613aab22a3a7f49e8e5eb32d6e2f933"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.4.1/slb_0.4.1_linux_amd64.tar.gz"
-      sha256 "9c398fb7f8d3bdaca8ad4e70497e84451609993eb5ba4e9b7cea52a8a7247972"
+      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.5.2/slb_0.5.2_linux_amd64.tar.gz"
+      sha256 "18ff0daf113d2432538e46f3ad21c41a97c8891966da4febcf18d717a5b826ed"
     end
     on_arm do
-      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.4.1/slb_0.4.1_linux_arm64.tar.gz"
-      sha256 "e689a8bd32c63dbbd01c02e8e63bcdb4264b33d57dd2736cee95e06cd4c5a3ea"
+      url "https://github.com/Dicklesworthstone/slb/releases/download/v0.5.2/slb_0.5.2_linux_arm64.tar.gz"
+      sha256 "ff315e57f1c43ebc1acfb7cc26c1cfe8c6b2157300f77f5478c4c6ce59ba4967"
     end
   end
 
