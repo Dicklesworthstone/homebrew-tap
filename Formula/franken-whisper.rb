@@ -8,23 +8,25 @@ class FrankenWhisper < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.9.3/franken_whisper-0.9.3-darwin_arm64.tar.gz"
-      sha256 "064d0aed84b81f3afe300f1b8715d7c1caf47884dcd98f0ca77acff8e56f64c2"
+      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.10.0/franken_whisper-0.10.0-darwin_arm64.tar.gz"
+      sha256 "d397f3080bee5b2a392666c6eec1f0d576a333dc6656473d9ae9bd1669c11870"
     end
     on_intel do
-      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.9.3/franken_whisper-0.9.3-darwin_amd64.tar.gz"
-      sha256 "6df673d1637e5ca9f326d1463d281bc84031dc2608b66ea734368e28cc1662d0"
+      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.10.0/franken_whisper-0.10.0-darwin_amd64.tar.gz"
+      sha256 "d580dce380b992994df03adfc167f1098f657b408732573a4037ec7dc3818507"
     end
   end
 
   on_linux do
+    depends_on "alsa-lib"
+
     on_intel do
-      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.9.3/franken_whisper-0.9.3-linux_amd64.tar.gz"
-      sha256 "d2f59705545d0b1ca5a5ce156d8d69229946139ed61d44b1c8ba1cf444c82cf5"
+      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.10.0/franken_whisper-0.10.0-linux_amd64.tar.gz"
+      sha256 "57b9652d77d8b385313f9b40dc132d321d28cacd4b0be6fb3b242bb19f112628"
     end
     on_arm do
-      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.9.3/franken_whisper-0.9.3-linux_arm64.tar.gz"
-      sha256 "6a6828dc0238630561716b59bb0c1681cb2a5217e1fd6e2b896a22c006eff01d"
+      url "https://github.com/Dicklesworthstone/franken_whisper/releases/download/v0.10.0/franken_whisper-0.10.0-linux_arm64.tar.gz"
+      sha256 "2e0354648799067ed1837298931009a944fdb03a493530b9c9b336b47718ccfa"
     end
   end
 
