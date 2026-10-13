@@ -1,14 +1,14 @@
 class Rch < Formula
   desc "Remote Compilation Helper for AI coding agents"
   homepage "https://github.com/Dicklesworthstone/remote_compilation_helper"
-  version "2.1.20"
+  version "2.1.21"
   # Upstream uses the MIT license with an additional OpenAI/Anthropic rider.
   license :cannot_represent
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/remote_compilation_helper/releases/download/v#{version}/rch-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "68ce1c67cfd3932c028f5207a888cb420212a0b7f2020cd227d12427a3604c85"
+      sha256 "9ae594d3287b7f437ccc4338a48e48b42c2282a5acdae0e72edc7b3ee4d0799b"
     end
     # No Intel macOS build is published for rch v2.1.15.
   end
@@ -16,7 +16,7 @@ class Rch < Formula
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/remote_compilation_helper/releases/download/v#{version}/rch-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "47aa40c006051d12a3e343b598d5996ed5826728b3ebc956fee5a1232a5f335a"
+      sha256 "0f2c3fac7353f969fdfdfae71f7215ec9d9282445c53b3b9af5807f8f64d7188"
     end
 
     # No Linux aarch64 build is published for rch v2.1.15.
