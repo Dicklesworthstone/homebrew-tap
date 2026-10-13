@@ -4,31 +4,31 @@
 class Frankenredis < Formula
   desc "Drop-in Redis replacement in Rust with strict semantics and deterministic latency"
   homepage "https://github.com/Dicklesworthstone/frankenredis"
-  version "0.1.1"
+  version "0.1.2"
   # Upstream uses the MIT license with an additional OpenAI/Anthropic rider.
   license :cannot_represent
 
   on_macos do
     on_arm do
       url "https://github.com/Dicklesworthstone/frankenredis/releases/download/v#{version}/frankenredis-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "5f8d0a7a45a44fd63e3b620c6d6e8bac523b14d5b0d9bc08179a91673ac1a5ba"
+      sha256 "021cb6b4f6829ff20f2496f4a8008bd1778b3cb446de761d9d662825a8e00b95"
     end
 
     on_intel do
       url "https://github.com/Dicklesworthstone/frankenredis/releases/download/v#{version}/frankenredis-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "931045b07f9e2b43545317d7ecc2c742cb0b84a2f7221bd6bf7c76f8340a5341"
+      sha256 "e7ae36b0c5ccc97e9822a10e5457d888400b8c5b5585eee52947f01e7d91b905"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/Dicklesworthstone/frankenredis/releases/download/v#{version}/frankenredis-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "c537355046f1999ab773ccef4a3bf1ff383fffbd67fbcfaf65aa2c2af0499692"
+      sha256 "8b61680067e072150f2adbbad0fa31cb6c4533976c9217ac4ae15ed0ca8e4e75"
     end
 
     on_intel do
       url "https://github.com/Dicklesworthstone/frankenredis/releases/download/v#{version}/frankenredis-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "a11507bc62054fe74fedfe26ae99166adabd3a477007532e40096a763c1b011f"
+      sha256 "754bc1b7e2959d7e36b2723e82247f6af3da7f438ce1393cfca293d8b2143a0e"
     end
   end
 
