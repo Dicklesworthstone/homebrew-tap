@@ -4,25 +4,25 @@
 class Xf < Formula
   desc "Search and analyze your Twitter/X archive data"
   homepage "https://github.com/Dicklesworthstone/xf"
-  version "0.4.2"
+  version "0.4.3"
   license "MIT"
 
   on_macos do
     # No Intel macOS build is published for xf v0.4.2.
     on_arm do
       url "https://github.com/Dicklesworthstone/xf/releases/download/v#{version}/xf-aarch64-apple-darwin.tar.gz"
-      sha256 "2fa29bd24456d1324a3f435cd4d9b2d2279b58f976e58aae4c6becd137e6e477"
+      sha256 "9f584106a3261a2fc05cb4d7dbabf47a654a00c393323fd6e5fbe4ac50ef799d"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/xf/releases/download/v#{version}/xf-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "8ace80e620e9f16d4aa3c0ace772825b54d02f2ad32c971b9f7f704690328400"
+      sha256 "5e9ec5e42aa8de46158463a54d2256039102cefa7bd26c5c21b32dc99f91d2e8"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/xf/releases/download/v#{version}/xf-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "1211a0cad0005e7d5f444a5516f1221b4c1f94a72512504d3953922161bf3b6e"
+      sha256 "f0b8bf985931986da5717d70ce238441e1448af269a007a9ce249ff89c0dd7f3"
     end
   end
 
