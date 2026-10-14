@@ -1,9 +1,9 @@
 class Ubs < Formula
   desc "Ultimate Bug Scanner meta-runner"
   homepage "https://github.com/Dicklesworthstone/ultimate_bug_scanner"
-  version "5.5.0"
-  url "https://github.com/Dicklesworthstone/ultimate_bug_scanner/releases/download/v5.5.0/ubs"
-  sha256 "7bafd261efdf32da252f004d70c954256855ff7d78fe441d7b7fdef70e87099d"
+  version "5.5.1"
+  url "https://github.com/Dicklesworthstone/ultimate_bug_scanner/releases/download/v5.5.1/ubs"
+  sha256 "bd4128dd4c91c58269c85aa1fd62c9315129113459a1dadcd6295021f93c52a1"
   license "MIT"
 
   depends_on "bash"
@@ -12,7 +12,7 @@ class Ubs < Formula
   depends_on "ripgrep"
 
   resource "ubs-daemon" do
-    url "https://github.com/Dicklesworthstone/ultimate_bug_scanner/releases/download/v5.5.0/ubs-daemon"
+    url "https://github.com/Dicklesworthstone/ultimate_bug_scanner/releases/download/v5.5.1/ubs-daemon"
     sha256 "617d8d283c2caac455991cff4ef67b7e36be9933e989130bdeae0e935b30e8a0"
   end
 
