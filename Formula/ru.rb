@@ -166,6 +166,6 @@ class Ru < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin/"ru"} --version")
-    assert_match "sync", shell_output("#{bin/"ru"} --help")
+    assert_match "sync", shell_output("#{bin/"ru"} --help 2>&1")
   end
 end
