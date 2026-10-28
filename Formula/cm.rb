@@ -4,28 +4,28 @@
 class Cm < Formula
   desc "Persistent memory system for AI coding agents using vector embeddings"
   homepage "https://github.com/Dicklesworthstone/cass_memory_system"
-  version "0.5.0"
+  version "0.5.1"
   license "MIT"
 
   on_macos do
     on_intel do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-macos-x64"
-      sha256 "b669a1e372ef6ae8d1155d8abd41d896e79c04f160dd68858c578a515440eb97"
+      sha256 "29d929b90c65af6964d94c52a8ff4ffb204dac7c36c8e895fd88d85c1558c16d"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-macos-arm64"
-      sha256 "776bfa3818222aa754f5c1006b874ec4de5348e653bd59453a8d776d47c677c3"
+      sha256 "b357a8b8b3f43b07a780ba3151287b759c072997ddaee46dbf984db4262e9bca"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-linux-x64"
-      sha256 "06e1563881f8bb1225cf7036068252ef210f242704a27f8ce32518b822181bd7"
+      sha256 "fa2753dbe6be47e567e530eea10d62af76d1ed31012543294d8ba3b001b8f652"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v#{version}/cass-memory-linux-arm64"
-      sha256 "42a5f878d26a072f49fc5c50785fa8c23b16cc37834c45267a484947b0be62f6"
+      sha256 "711aa415a6fb758d86a95a4da5842686191e90a64cec8101bff00306e695f1aa"
     end
   end
 
