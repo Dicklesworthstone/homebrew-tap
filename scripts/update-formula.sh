@@ -204,34 +204,45 @@ case "$TOOL" in
     # cm has multi-arch binaries
     echo "Fetching checksums for cm..."
 
-    MACOS_ARM_CHECKSUM=$(curl -sL "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v${VERSION}/cass-memory-macos-arm64.sha256" | cut -d' ' -f1)
-    MACOS_INTEL_CHECKSUM=$(curl -sL "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v${VERSION}/cass-memory-macos-x64.sha256" | cut -d' ' -f1)
-    LINUX_CHECKSUM=$(curl -sL "https://github.com/Dicklesworthstone/cass_memory_system/releases/download/v${VERSION}/cass-memory-linux-x64.sha256" | cut -d' ' -f1)
+    MACOS_ARM_CHECKSUM=$(fetch_release_sha256 "Dicklesworthstone/cass_memory_system" "cass-memory-macos-arm64")
+    MACOS_INTEL_CHECKSUM=$(fetch_release_sha256 "Dicklesworthstone/cass_memory_system" "cass-memory-macos-x64")
+    LINUX_CHECKSUM=$(fetch_release_sha256 "Dicklesworthstone/cass_memory_system" "cass-memory-linux-x64")
+    LINUX_ARM_CHECKSUM=$(fetch_release_sha256 "Dicklesworthstone/cass_memory_system" "cass-memory-linux-arm64")
+
+    require_sha256 "cass-memory-macos-arm64" "$MACOS_ARM_CHECKSUM"
+    require_sha256 "cass-memory-macos-x64" "$MACOS_INTEL_CHECKSUM"
+    require_sha256 "cass-memory-linux-x64" "$LINUX_CHECKSUM"
+    require_sha256 "cass-memory-linux-arm64" "$LINUX_ARM_CHECKSUM"
 
     echo "  macOS ARM: $MACOS_ARM_CHECKSUM"
     echo "  macOS Intel: $MACOS_INTEL_CHECKSUM"
-    echo "  Linux: $LINUX_CHECKSUM"
+    echo "  Linux Intel: $LINUX_CHECKSUM"
+    echo "  Linux ARM: $LINUX_ARM_CHECKSUM"
 
-    # Update version
-    sed -i.bak "s/version \"[^\"]*\"/version \"${VERSION}\"/" "$FORMULA_FILE"
+    # Match the exact asset filename so macOS and Linux ARM checksums stay distinct.
+    # Validate every match before writing the version or any checksum.
+    ruby - "$FORMULA_FILE" "$VERSION" \
+      "$MACOS_INTEL_CHECKSUM" "$MACOS_ARM_CHECKSUM" "$LINUX_CHECKSUM" "$LINUX_ARM_CHECKSUM" <<'RUBY'
+      path, version, macos_x64, macos_arm64, linux_x64, linux_arm64 = ARGV
+      content = File.read(path)
+      checksums = {
+        "cass-memory-macos-x64" => macos_x64,
+        "cass-memory-macos-arm64" => macos_arm64,
+        "cass-memory-linux-x64" => linux_x64,
+        "cass-memory-linux-arm64" => linux_arm64
+      }
 
-    # Update checksums using Ruby-aware replacement
-    ruby -i.bak -e '
-      content = File.read(ARGV[0])
-      # Replace macOS Intel checksum (on_macos/on_intel block)
-      content.gsub!(/on_macos do\s+on_intel do\s+url[^\n]+\n\s+sha256 "[a-f0-9]+"/) { |m|
-        m.sub(/sha256 "[a-f0-9]+"/, "sha256 \"'"$MACOS_INTEL_CHECKSUM"'\"")
-      }
-      # Replace macOS ARM checksum (on_arm block inside on_macos)
-      content.gsub!(/on_arm do\s+url[^\n]+arm64[^\n]*\n\s+sha256 "[a-f0-9]+"/) { |m|
-        m.sub(/sha256 "[a-f0-9]+"/, "sha256 \"'"$MACOS_ARM_CHECKSUM"'\"")
-      }
-      # Replace Linux Intel checksum
-      content.gsub!(/on_linux do\s+on_intel do\s+url[^\n]+\n\s+sha256 "[a-f0-9]+"/) { |m|
-        m.sub(/sha256 "[a-f0-9]+"/, "sha256 \"'"$LINUX_CHECKSUM"'\"")
-      }
-      File.write(ARGV[0], content)
-    ' "$FORMULA_FILE"
+      checksums.each do |asset, checksum|
+        pattern = /(url "[^"\n]*\/#{Regexp.escape(asset)}"\s+sha256 ")[a-f0-9]+(")/
+        abort "Error: expected one checksum block for #{asset}" unless content.scan(pattern).length == 1
+        content.sub!(pattern) { "#{$1}#{checksum}#{$2}" }
+      end
+
+      version_pattern = /^(\s*version ")[^"]*(")/
+      abort "Error: expected one version declaration" unless content.scan(version_pattern).length == 1
+      content.sub!(version_pattern) { "#{$1}#{version}#{$2}" }
+      File.write(path, content)
+RUBY
     ;;
 
   ubs)
