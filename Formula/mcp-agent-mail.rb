@@ -7,7 +7,7 @@
 class McpAgentMail < Formula
   desc "Mail-like coordination layer for AI coding agents (MCP server + am CLI)"
   homepage "https://github.com/Dicklesworthstone/mcp_agent_mail_rust"
-  version "0.3.39"
+  version "0.3.40"
   license "MIT"
 
   # Release archives contain both binaries directly at the archive root.
@@ -15,11 +15,11 @@ class McpAgentMail < Formula
     depends_on macos: :ventura
     on_arm do
       url "https://github.com/Dicklesworthstone/mcp_agent_mail_rust/releases/download/v#{version}/mcp-agent-mail-aarch64-apple-darwin.tar.xz"
-      sha256 "97f5fe0093011af1e71f8822646279cf43de4862ac673dbf50ab19aacf6a7df2"
+      sha256 "9b410ac2ee38e25754efdf246cec69ea46ab9b88ea73aac01267ad38bf73a066"
     end
     on_intel do
       url "https://github.com/Dicklesworthstone/mcp_agent_mail_rust/releases/download/v#{version}/mcp-agent-mail-x86_64-apple-darwin.tar.xz"
-      sha256 "412ca7f95384b27ee2becf304550724ca3d724dafe377b038ea1cc11cefc82e3"
+      sha256 "62a869ddde88adb51c7b65bb8185095a8a5bf01d097c66d30d0f327e0a8247dd"
     end
   end
 
@@ -27,11 +27,11 @@ class McpAgentMail < Formula
     on_intel do
       # Both GNU/Linux targets are built against glibc 2.28.
       url "https://github.com/Dicklesworthstone/mcp_agent_mail_rust/releases/download/v#{version}/mcp-agent-mail-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "2e70d97e77a15cb202535f3f6f5c93386aab1ba373d7f1eb0ff69ac80b55430e"
+      sha256 "f07fec3c5cbf1664f8ee0bef0a4913c48e6ff1bd9a970c468ebd3653228ec6ee"
     end
     on_arm do
       url "https://github.com/Dicklesworthstone/mcp_agent_mail_rust/releases/download/v#{version}/mcp-agent-mail-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "fe333ae2adffef27a603dcab3b1fe9adfdc8bc7d690e42981c92d2e826e46ca6"
+      sha256 "f8381f01927805427b8f9f40b9033c7e4a2a68853b22bc258035a2b6392b9780"
     end
   end
 
