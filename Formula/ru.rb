@@ -4,8 +4,8 @@
 class Ru < Formula
   desc "Robust CLI tool for synchronizing GitHub repositories"
   homepage "https://github.com/Dicklesworthstone/repo_updater"
-  url "https://github.com/Dicklesworthstone/repo_updater/releases/download/v1.6.0/ru"
-  sha256 "f3d5d1197f238c115a98c71c73260fa74b3c34b9e54264d76f9ccfb5be24bfe4"
+  url "https://github.com/Dicklesworthstone/repo_updater/releases/download/v1.7.0/ru"
+  sha256 "aec03955124f67a1625e75e754646877fc98dcaf542caa3c58c8f84d25656f31"
   license "MIT"
 
   # Runtime dependencies
@@ -52,7 +52,11 @@ class Ru < Formula
                   return
                   ;;
               import)
-                  COMPREPLY=($(compgen -f -- "${cur}"))
+                  if [[ "${cur}" == -* ]]; then
+                      COMPREPLY=($(compgen -W "--stars --org= --user= --limit=" -- "${cur}"))
+                  else
+                      COMPREPLY=($(compgen -f -- "${cur}"))
+                  fi
                   return
                   ;;
               review)
@@ -89,7 +93,7 @@ class Ru < Formula
               'self-update:Update ru'
               'config:Show or set configuration'
               'prune:Manage orphan repositories'
-              'import:Import repos from file'
+              'import:Import repos from files or GitHub'
               'review:Review GitHub issues and PRs'
           )
           global_opts=('-h[Show help]' '--help[Show help]' '-v[Show version]' '--version[Show version]' '--json[JSON output]' '-q[Quiet]' '--quiet[Quiet]' '--verbose[Verbose]' '--non-interactive[Never prompt]')
@@ -104,7 +108,7 @@ class Ru < Formula
                       status) _arguments '--fetch' '--no-fetch' $global_opts ;;
                       init) _arguments '--example' $global_opts ;;
                       add) _arguments '--private' '*:repository:' $global_opts ;;
-                      import) _arguments '*:file:_files' $global_opts ;;
+                      import) _arguments '--stars' '*--org=:organization:' '*--user=:user:' '--limit=:number:' '*:file:_files' $global_opts ;;
                       review) _arguments '--plan' '--apply' '--dry-run' '--mode:mode:(local ntm)' '--max-repos:number' '--repos:pattern' '--skip-days:days' '--parallel:number' '--push' $global_opts ;;
                       *) _arguments $global_opts ;;
                   esac
@@ -127,7 +131,7 @@ class Ru < Formula
       complete -c ru -n __fish_use_subcommand -a self-update -d 'Update ru'
       complete -c ru -n __fish_use_subcommand -a config -d 'Show or set configuration'
       complete -c ru -n __fish_use_subcommand -a prune -d 'Manage orphan repositories'
-      complete -c ru -n __fish_use_subcommand -a import -d 'Import repos from file'
+      complete -c ru -n __fish_use_subcommand -a import -d 'Import repos from files or GitHub'
       complete -c ru -n __fish_use_subcommand -a review -d 'Review GitHub issues and PRs'
       complete -c ru -s h -l help -d 'Show help'
       complete -c ru -s v -l version -d 'Show version'
@@ -143,6 +147,10 @@ class Ru < Formula
       complete -c ru -n '__fish_seen_subcommand_from review' -l plan -d 'Generate plans'
       complete -c ru -n '__fish_seen_subcommand_from review' -l apply -d 'Execute plans'
       complete -c ru -n '__fish_seen_subcommand_from review' -l mode -r -a 'local ntm' -d 'Review mode'
+      complete -c ru -n '__fish_seen_subcommand_from import' -l stars -d 'Import your starred repos'
+      complete -c ru -n '__fish_seen_subcommand_from import' -l org -r -d 'Import the repos of an organization'
+      complete -c ru -n '__fish_seen_subcommand_from import' -l user -r -d 'Import the repos of a user'
+      complete -c ru -n '__fish_seen_subcommand_from import' -l limit -r -d 'Max repos per GitHub source'
     FISH
   end
 
