@@ -5,30 +5,30 @@
 class Ee < Formula
   desc "Durable, local-first, explainable memory for coding agents"
   homepage "https://github.com/Dicklesworthstone/eidetic_engine_cli"
-  version "0.18.0"
+  version "0.19.0"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.18.0/ee-aarch64-apple-darwin.tar.xz"
-      sha256 "6e8cfd66997be4a631e30125ea86b3a86a01958dbc6abf33ce795d32813eec87"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.19.0/ee-aarch64-apple-darwin.tar.xz"
+      sha256 "2628bb84cd941a2167b4d0e35f340281cd54642ed1614cfa59f44bacc1de7f6c"
     end
 
     on_intel do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.18.0/ee-x86_64-apple-darwin.tar.xz"
-      sha256 "270d64d73154bec70d319339b947a70c4bb715b9825fe3e1a89db68113939d92"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.19.0/ee-x86_64-apple-darwin.tar.xz"
+      sha256 "e4cb31280d73cbf88e2df8bb3a8f9bbcaf954220fc93ec75161a4c360438bbc5"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.18.0/ee-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "20a01587113ba25d4412ca46217e81b1958a017eb29eeb11ef435079f67c0637"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.19.0/ee-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "c5ee2528331942827d1edb0715c33d70155f03c0da3b14c591e5498cd785c4aa"
     end
 
     on_intel do
-      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.18.0/ee-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "a8c78867c10855cff4914b673bd3075fc4d7bc912065a8dcfbf9971dfb8890fc"
+      url "https://github.com/Dicklesworthstone/eidetic_engine_cli/releases/download/v0.19.0/ee-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "03b54e551c701701a846c173d5a0911f4763f917e02661153eb9c032dfda50eb"
     end
   end
 
