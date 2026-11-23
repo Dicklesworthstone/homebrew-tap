@@ -4,28 +4,28 @@
 class Focr < Formula
   desc "Pure-Rust CPU-only OCR engine for hand-ported vision-language models"
   homepage "https://github.com/Dicklesworthstone/franken_ocr"
-  version "0.9.1"
+  version "0.10.0"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.9.1/focr-aarch64-apple-darwin-neon-sdot-i8mm"
-      sha256 "a4bf09a23b14b269e1b73301b9830544a2ce37340a9bd342908001646f6cdb4e"
+      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.10.0/focr-aarch64-apple-darwin-neon-sdot-i8mm"
+      sha256 "642a86a27fafeaf3c395e86323691027723ec0b79330905636bc868d24d0bf1a"
     end
     on_intel do
-      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.9.1/focr-x86_64-apple-darwin"
-      sha256 "f99a1c5b631ff63356dd33fc1b207bdfbafd7fb37c99647915a7933313e3e50d"
+      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.10.0/focr-x86_64-apple-darwin"
+      sha256 "4fff6e93ff3278b5162985b32ec25d2a683384f0d55671075c364290b19696a5"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.9.1/focr-x86_64-unknown-linux-gnu"
-      sha256 "281900b79bcc5858a87bc99902240191851da2f4c283558808f622d331ec689d"
+      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.10.0/focr-x86_64-unknown-linux-gnu"
+      sha256 "a0c5869dacfdb5ae23d470ae7bc186e5233ba289cfff355a72f5c8f685778b51"
     end
     on_arm do
-      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.9.1/focr-aarch64-unknown-linux-gnu"
-      sha256 "35dbbbd89cf125e201f7425ef3d562eb24f6c848285d916d61c01415f6dbf784"
+      url "https://github.com/Dicklesworthstone/franken_ocr/releases/download/v0.10.0/focr-aarch64-unknown-linux-gnu"
+      sha256 "222204f7a3b892cfafc7bc28e0d2184788b9b14230fa3e42a441078a91b2b177"
     end
   end
 
