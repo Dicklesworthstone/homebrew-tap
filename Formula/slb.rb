@@ -40,9 +40,9 @@ class Slb < Formula
       SLB (Simultaneous Launch Button) implements two-person authorization.
 
       Quick start:
-        slb init                  # Initialize in current project
-        slb create "rm -rf /"     # Create a launch request
-        slb list                  # List pending requests
+        slb init                                           # Once per project
+        slb run "rm -rf ./build" --reason "Clean rebuild"  # Request review; runs once approved
+        slb pending                                        # List pending requests
     EOS
   end
 
